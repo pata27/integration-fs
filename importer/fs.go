@@ -179,9 +179,7 @@ func realpathFollow(path string) (resolved string, dev uint64, err error) {
 		return
 	}
 
-	if info.Mode()&os.ModeDir != 0 {
-		dev = dirDevice(info)
-	}
+	dev = dirDevice(info)
 
 	if info.Mode()&os.ModeSymlink != 0 {
 		realpath, err := os.Readlink(path)
